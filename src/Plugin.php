@@ -69,8 +69,11 @@ class Plugin implements PluginEntryPointInterface
         $view_factory,
         string $cache_dir
     ) : void {
+        $config = clone $app['config'];
+        $config->set('ide-helper.include_factory_builders', true);
+
         $stubs_generator_command = new \Barryvdh\LaravelIdeHelper\Console\GeneratorCommand(
-            $app['config'],
+            $config,
             $fake_filesystem,
             $view_factory
         );
@@ -100,11 +103,14 @@ class Plugin implements PluginEntryPointInterface
         $view_factory,
         string $cache_dir
     ) : void {
+        $config = clone $app['config'];
+        $config->set('ide-helper.include_factory_builders', true);
+
         /** @psalm-suppress InvalidArgument */
         $meta_generator_command = new FakeMetaCommand(
             $fake_filesystem,
             $view_factory,
-            $app['config']
+            $config
         );
 
         $meta_generator_command->setLaravel($app);
