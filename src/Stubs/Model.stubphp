@@ -1,0 +1,26 @@
+<?php
+
+namespace Illuminate\Database\Eloquent;
+
+use ArrayAccess;
+use JsonSerializable;
+use Illuminate\Contracts\Support\Jsonable;
+use Illuminate\Contracts\Support\Arrayable;
+use Illuminate\Contracts\Routing\UrlRoutable;
+use Illuminate\Contracts\Queue\QueueableEntity;
+
+/**
+ * @implements \ArrayAccess<string, mixed>
+ */
+abstract class Model implements ArrayAccess, Arrayable, Jsonable, JsonSerializable, QueueableEntity, UrlRoutable
+{
+    /**
+     * Get all of the models from the database.
+     *
+     * @param  array|mixed  $columns
+     * @return \Illuminate\Database\Eloquent\Collection<static>
+     */
+    public static function all($columns = ['*'])
+    {
+    }
+}
