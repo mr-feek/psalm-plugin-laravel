@@ -34,6 +34,11 @@ Feature: Eloquent Collection Types
         {
           return User::all();
         }
+
+        public function getFirst(): ?User
+        {
+          return $this->getAll()->first();
+        }
     }
     """
     When I run Psalm
