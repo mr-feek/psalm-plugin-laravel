@@ -11,6 +11,7 @@ use Illuminate\Contracts\Queue\QueueableEntity;
 
 /**
  * @implements \ArrayAccess<string, mixed>
+ * @mixin Builder<static>
  */
 abstract class Model implements ArrayAccess, Arrayable, Jsonable, JsonSerializable, QueueableEntity, UrlRoutable
 {

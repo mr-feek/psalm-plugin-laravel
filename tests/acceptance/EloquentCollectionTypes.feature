@@ -39,6 +39,14 @@ Feature: Eloquent Collection Types
         {
           return $this->getAll()->first();
         }
+
+        /**
+        * @psalm-return \Illuminate\Database\Eloquent\Collection<User>
+        */
+        public function getWhere(array $attributes): \Illuminate\Database\Eloquent\Collection
+        {
+          return User::where($attributes)->get();
+        }
     }
     """
     When I run Psalm
